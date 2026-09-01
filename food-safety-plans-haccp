@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Safety Plans & HACCP | Food Safety Groundwork</title>
+  <meta name="description" content="Food Safety Groundwork develops and reassesses FDA Food Safety Plans and HACCP plans around your products, processes, hazards, regulatory requirements, and actual operating workflows.">
+  <meta name="theme-color" content="#0b3f72">
+
+  <style>
+    :root {
+      --navy: #082f55;
+      --navy-2: #0b477e;
+      --blue: #0e67b2;
+      --blue-soft: #edf5fb;
+      --teal: #0e8d96;
+      --green: #3a8e43;
+      --green-dark: #2f7137;
+      --green-soft: #eff8f0;
+      --ink: #17324d;
+      --text: #34495e;
+      --muted: #6f8293;
+      --line: #dbe5ec;
+      --surface: #f7fafc;
+      --white: #ffffff;
+      --shadow: 0 16px 40px rgba(8,47,85,.09);
+      --radius: 14px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(219,229,236,.8);
+    }
+    .header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex: 0 0 auto;
+      color: var(--navy);
+    }
+    .brand-mark { width: 52px; height: 52px; flex: 0 0 52px; display: block; }
+    .brand-lockup { display: flex; flex-direction: column; line-height: 1; }
+    .brand-name {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: .01em;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    .brand-subtitle {
+      margin-top: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .nav a { position: relative; padding: 8px 0; }
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 100%; bottom: 2px;
+      height: 2px;
+      background: var(--green);
+      transition: right .2s ease;
+    }
+    .nav a:hover::after { right: 0; }
+    .nav .contact-link { color: var(--green-dark); }
+
+    /* Page hero */
+    .page-hero {
+      width: min(var(--max), calc(100% - 40px));
+      min-height: 355px;
+      margin: 18px auto 0;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--navy);
+    }
+    .hero-copy {
+      padding: 48px 48px 46px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: white;
+      background:
+        radial-gradient(circle at 95% 15%, rgba(14,141,150,.23), transparent 33%),
+        linear-gradient(135deg, #082f55 0%, #0b477e 100%);
+    }
+    .kicker {
+      margin: 0 0 12px;
+      color: #a8dcb0;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      max-width: 690px;
+      font-size: clamp(38px, 4.6vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -.035em;
+      color: white;
+    }
+    .hero-lead {
+      max-width: 690px;
+      margin: 18px 0 0;
+      font-size: 18px;
+      color: rgba(255,255,255,.88);
+    }
+    .hero-actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 20px;
+      border-radius: 7px;
+      font-weight: 700;
+      border: 2px solid transparent;
+    }
+    .btn-white { background: white; color: var(--navy); }
+    .btn-outline { border-color: rgba(255,255,255,.72); color: white; }
+    .hero-photo {
+      min-height: 355px;
+      background:
+        linear-gradient(90deg, rgba(8,47,85,.16), rgba(8,47,85,.04)),
+        url("https://images.pexels.com/photos/2760286/pexels-photo-2760286.jpeg?cs=srgb&dl=pexels-nc-farm-bureau-mark-2760286.jpg&fm=jpg")
+        center / cover no-repeat;
+    }
+
+    /* Intro */
+    .intro { padding: 58px 0 28px; }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 54px;
+      align-items: start;
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .section-title {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(29px, 3vw, 40px);
+      line-height: 1.12;
+      letter-spacing: -.02em;
+    }
+    .intro-copy {
+      font-size: 18px;
+      color: #455d70;
+    }
+    .intro-copy p { margin: 0 0 14px; }
+
+    /* Two regulatory paths */
+    .frameworks { padding: 32px 0 64px; }
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .framework-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 30px;
+      background: white;
+      box-shadow: 0 10px 28px rgba(8,47,85,.055);
+    }
+    .framework-card.blue { border-top: 5px solid var(--blue); }
+    .framework-card.green { border-top: 5px solid var(--green); }
+    .framework-label {
+      display: inline-flex;
+      padding: 5px 9px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .framework-card.blue .framework-label { color: var(--blue); background: var(--blue-soft); }
+    .framework-card.green .framework-label { color: var(--green-dark); background: var(--green-soft); }
+    .framework-card h2 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 27px;
+      line-height: 1.1;
+    }
+    .framework-card p { margin: 0 0 14px; }
+    .framework-card ul {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .framework-card li {
+      position: relative;
+      margin: 9px 0;
+      padding-left: 22px;
+    }
+    .framework-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    /* Deliverables */
+    .deliverables {
+      padding: 62px 0;
+      background: linear-gradient(180deg, #f8fbfd, #ffffff);
+      border-top: 1px solid #edf2f5;
+      border-bottom: 1px solid #edf2f5;
+    }
+    .deliverable-head {
+      max-width: 760px;
+      margin-bottom: 30px;
+    }
+    .deliverable-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .deliverable {
+      padding: 24px 23px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: white;
+    }
+    .deliverable strong {
+      display: block;
+      color: var(--navy);
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+    .deliverable span { color: var(--muted); font-size: 15px; }
+
+    /* Practical approach */
+    .practical { padding: 66px 0; }
+    .practical-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 38px;
+      align-items: center;
+    }
+    .practical-copy p {
+      margin: 16px 0 0;
+      font-size: 17px;
+      color: #455d70;
+    }
+    .principles {
+      display: grid;
+      gap: 12px;
+    }
+    .principle {
+      padding: 19px 20px;
+      border-left: 4px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 0 9px 9px 0;
+    }
+    .principle:nth-child(2) {
+      border-left-color: var(--green);
+      background: var(--green-soft);
+    }
+    .principle:nth-child(3) {
+      border-left-color: var(--teal);
+      background: #edf9fa;
+    }
+    .principle strong { color: var(--navy); }
+
+    /* Fit section */
+    .fit { padding: 0 0 66px; }
+    .fit-card {
+      padding: 34px;
+      border-radius: var(--radius);
+      color: white;
+      background: linear-gradient(130deg, #0a3a68, #0d5c9e);
+      box-shadow: var(--shadow);
+    }
+    .fit-card h2 { margin: 0 0 10px; font-size: 30px; }
+    .fit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .fit-item {
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 9px;
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.9);
+      font-size: 15px;
+    }
+
+    /* CTA */
+    .cta { padding: 0 0 70px; }
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 32px 36px;
+      border-radius: var(--radius);
+      background: var(--green-soft);
+      border: 1px solid #d8eadb;
+    }
+    .cta h2 { margin: 0; color: var(--navy); font-size: 30px; }
+    .cta p { margin: 7px 0 0; color: #557064; }
+    .btn-green { background: var(--green); color: white; border-color: var(--green); white-space: nowrap; }
+
+    footer {
+      background: #062946;
+      color: #d9e6ef;
+      padding: 24px 0;
+      font-size: 13px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .footer-inner strong { color: white; }
+
+    @media (max-width: 900px) {
+      .nav { display: none; }
+      .page-hero { grid-template-columns: 1fr; }
+      .hero-photo { min-height: 250px; }
+      .intro-grid, .practical-grid { grid-template-columns: 1fr; gap: 24px; }
+      .framework-grid { grid-template-columns: 1fr; }
+      .deliverable-grid { grid-template-columns: repeat(2, 1fr); }
+      .fit-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 620px) {
+      .wrap { width: calc(100% - 28px); }
+      .header-inner { min-height: 68px; }
+      .brand { gap: 9px; }
+      .brand-mark { width: 46px; height: 46px; flex-basis: 46px; }
+      .brand-name { font-size: 17px; }
+      .brand-subtitle { font-size: 10px; }
+      .page-hero { width: calc(100% - 28px); }
+      .hero-copy { padding: 38px 24px; }
+      .hero-lead { font-size: 16px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      .deliverable-grid, .fit-grid { grid-template-columns: 1fr; }
+      .framework-card { padding: 24px; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+      .btn-green { width: 100%; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="Food Safety Groundwork home">
+        <svg class="brand-mark" viewBox="0 0 72 72" role="img" aria-label="">
+          <defs>
+            <linearGradient id="fg-blue" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#0b477e"/>
+              <stop offset="1" stop-color="#0e67b2"/>
+            </linearGradient>
+            <linearGradient id="fg-teal" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#0e67b2"/>
+              <stop offset="1" stop-color="#0e8d96"/>
+            </linearGradient>
+            <linearGradient id="fg-green" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#0e8d96"/>
+              <stop offset="1" stop-color="#3a8e43"/>
+            </linearGradient>
+          </defs>
+          <!-- layered geometric mark inspired by the approved Food Safety Groundwork logo -->
+          <path d="M36 4 64 19 54 25 36 15 18 25 18 34 8 28 8 19Z" fill="url(#fg-blue)"/>
+          <path d="M18 28 36 38 54 28 64 34 36 50 8 34Z" fill="url(#fg-teal)"/>
+          <path d="M18 38 36 48 54 38 64 44 36 60 8 44Z" fill="url(#fg-green)"/>
+          <path d="M18 49 36 59 54 49 64 55 36 70 8 55Z" fill="#2f7137" opacity=".95"/>
+          <path d="M20 27 36 18 52 27 42 33 36 30 30 33Z" fill="#ffffff" opacity=".98"/>
+          <path d="M20 42 30 36 36 39 42 36 52 42 36 51Z" fill="#ffffff" opacity=".98"/>
+        </svg>
+        <span class="brand-lockup">
+          <span class="brand-name">FOOD SAFETY<br>GROUNDWORK</span>
+          <span class="brand-subtitle">Food Safety &amp; Quality Consulting</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#standards">Standards</a>
+        <a href="index.html#industries">Industries</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#resources">Resources</a>
+        <a class="contact-link" href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="hero-copy">
+        <p class="kicker">Core Service</p>
+        <h1>Food Safety Plans &amp; HACCP</h1>
+        <p class="hero-lead">
+          The right plan starts with the right regulatory framework. We develop and
+          reassess practical, operation-specific food safety plans around your products,
+          processes, hazards, and actual daily workflows.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-white" href="index.html#contact">Discuss Your Plan</a>
+          <a class="btn btn-outline" href="#frameworks">See the Difference</a>
+        </div>
+      </div>
+      <div class="hero-photo" role="img" aria-label="Stainless steel food processing equipment"></div>
+    </section>
+
+    <section class="intro">
+      <div class="wrap intro-grid">
+        <div>
+          <p class="eyebrow">Start with applicability</p>
+          <h2 class="section-title">Not every facility needs the same kind of plan.</h2>
+        </div>
+        <div class="intro-copy">
+          <p>
+            “HACCP plan” and “Food Safety Plan” are not interchangeable labels. The
+            applicable framework depends on the products you make, the processes you use,
+            the regulator with jurisdiction, and any exemptions or modified requirements
+            that apply to your facility.
+          </p>
+          <p>
+            We start by understanding the operation first, then build the plan around the
+            requirements that actually apply.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="frameworks" id="frameworks">
+      <div class="wrap framework-grid">
+
+        <article class="framework-card blue">
+          <span class="framework-label">FSMA / FDA Preventive Controls</span>
+          <h2>Food Safety Plans</h2>
+          <p>
+            Covered facilities under FDA's Preventive Controls for Human Food rule
+            generally require a written, facility-specific Food Safety Plan developed
+            under the hazard analysis and risk-based preventive controls framework.
+          </p>
+          <p>
+            Our consulting support includes PCQI-led plan development and reassessment,
+            with the plan structured around the facility rather than a generic template.
+          </p>
+          <ul>
+            <li>Hazard analysis</li>
+            <li>Preventive controls, when required</li>
+            <li>Monitoring and corrective-action procedures</li>
+            <li>Verification and validation support</li>
+            <li>Supply-chain controls, when applicable</li>
+            <li>Recall-plan integration, when applicable</li>
+          </ul>
+        </article>
+
+        <article class="framework-card green">
+          <span class="framework-label">Commodity / Agency-Specific HACCP</span>
+          <h2>HACCP Plans</h2>
+          <p>
+            HACCP remains the applicable regulatory framework for a number of food
+            operations, including FDA-regulated seafood and juice processors and
+            USDA/FSIS-regulated meat and poultry establishments.
+          </p>
+          <p>
+            We develop and reassess HACCP systems around the hazards, control strategies,
+            critical limits, monitoring, corrective action, verification, and records
+            appropriate to the operation.
+          </p>
+          <ul>
+            <li>Product and process evaluation</li>
+            <li>Hazard analysis</li>
+            <li>Critical Control Point determination</li>
+            <li>Critical limits and monitoring</li>
+            <li>Corrective actions</li>
+            <li>Verification, validation, and records</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="deliverables">
+      <div class="wrap">
+        <div class="deliverable-head">
+          <p class="eyebrow">What we can help with</p>
+          <h2 class="section-title">From first draft to complete reassessment.</h2>
+        </div>
+
+        <div class="deliverable-grid">
+          <div class="deliverable">
+            <strong>New Plan Development</strong>
+            <span>Build a Food Safety Plan or HACCP plan for a new facility, product, or process.</span>
+          </div>
+          <div class="deliverable">
+            <strong>Plan Reassessment</strong>
+            <span>Bring an older plan back into alignment with current products, processes, hazards, and requirements.</span>
+          </div>
+          <div class="deliverable">
+            <strong>Hazard Analysis</strong>
+            <span>Evaluate biological, chemical, and physical hazards using the framework applicable to the operation.</span>
+          </div>
+          <div class="deliverable">
+            <strong>Controls &amp; Procedures</strong>
+            <span>Develop practical monitoring, corrective-action, verification, and supporting procedures.</span>
+          </div>
+          <div class="deliverable">
+            <strong>Records &amp; Forms</strong>
+            <span>Create records that capture what needs to be documented without making the operation harder to run.</span>
+          </div>
+          <div class="deliverable">
+            <strong>Gap &amp; Audit Support</strong>
+            <span>Address regulatory, customer, or certification findings tied to the plan and its implementation.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="practical">
+      <div class="wrap practical-grid">
+        <div class="practical-copy">
+          <p class="eyebrow">Our approach</p>
+          <h2 class="section-title">The plan has to work on the production floor.</h2>
+          <p>
+            A technically correct plan that does not match the way the facility actually
+            operates becomes a paperwork problem. We focus on building controls,
+            monitoring activities, records, and responsibilities that make sense in the
+            real workflow while still meeting the applicable regulatory framework.
+          </p>
+        </div>
+
+        <div class="principles">
+          <div class="principle">
+            <strong>Operation-specific.</strong><br>
+            Products, processes, equipment, people, and workflows come first.
+          </div>
+          <div class="principle">
+            <strong>Practical documentation.</strong><br>
+            Forms and records should capture useful evidence, not create paperwork for its own sake.
+          </div>
+          <div class="principle">
+            <strong>Built for implementation.</strong><br>
+            The written plan and what actually happens in the facility should tell the same story.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit">
+      <div class="wrap">
+        <div class="fit-card">
+          <h2>This service may be a fit if...</h2>
+          <div class="fit-grid">
+            <div class="fit-item">You need your first formal Food Safety Plan or HACCP plan.</div>
+            <div class="fit-item">Your products, process, equipment, or facility have changed.</div>
+            <div class="fit-item">Your current plan no longer reflects what actually happens.</div>
+            <div class="fit-item">An audit, inspection, or customer review identified gaps.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap cta-inner">
+        <div>
+          <h2>Not sure which framework applies?</h2>
+          <p>Tell us what you manufacture and how you operate. We can start there.</p>
+        </div>
+        <a class="btn btn-green" href="index.html#contact">Let's Talk</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div><strong>Food Safety Groundwork</strong> &nbsp;|&nbsp; Food Safety &amp; Quality Consulting</div>
+      <div>&copy; 2026 Food Safety Groundwork</div>
+    </div>
+  </footer>
+</body>
+</html>
