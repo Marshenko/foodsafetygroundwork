@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Safety & Quality Management Systems | Food Safety Groundwork</title>
+  <meta name="description" content="Food Safety Groundwork develops, improves, and supports practical food safety and quality management systems for SQF, BRCGS, and real-world food manufacturing operations.">
+  <meta name="theme-color" content="#0b477e">
+
+  <style>
+    :root {
+      --navy: #082f55;
+      --navy-2: #0b477e;
+      --blue: #0e67b2;
+      --blue-soft: #edf5fb;
+      --teal: #0e8d96;
+      --teal-soft: #edf9fa;
+      --green: #3a8e43;
+      --green-dark: #2f7137;
+      --green-soft: #eff8f0;
+      --ink: #17324d;
+      --text: #34495e;
+      --muted: #6f8293;
+      --line: #dbe5ec;
+      --surface: #f7fafc;
+      --white: #ffffff;
+      --shadow: 0 16px 40px rgba(8,47,85,.09);
+      --radius: 14px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(219,229,236,.8);
+    }
+    .header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex: 0 0 auto;
+      color: var(--navy);
+    }
+    .brand-mark { width: 52px; height: 52px; flex: 0 0 52px; display: block; }
+    .brand-lockup { display: flex; flex-direction: column; line-height: 1; }
+    .brand-name {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: .01em;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    .brand-subtitle {
+      margin-top: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .nav a { position: relative; padding: 8px 0; }
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 100%; bottom: 2px;
+      height: 2px;
+      background: var(--green);
+      transition: right .2s ease;
+    }
+    .nav a:hover::after { right: 0; }
+    .nav .contact-link { color: var(--green-dark); }
+
+    /* Hero */
+    .page-hero {
+      width: min(var(--max), calc(100% - 40px));
+      min-height: 355px;
+      margin: 18px auto 0;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--navy);
+    }
+    .hero-copy {
+      padding: 48px 48px 46px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: white;
+      background:
+        radial-gradient(circle at 95% 15%, rgba(58,142,67,.30), transparent 34%),
+        linear-gradient(135deg, #082f55 0%, #0b477e 58%, #176d72 100%);
+    }
+    .kicker {
+      margin: 0 0 12px;
+      color: #b5e1bb;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(36px, 4.4vw, 58px);
+      line-height: 1.03;
+      letter-spacing: -.035em;
+      color: white;
+    }
+    .hero-lead {
+      max-width: 700px;
+      margin: 18px 0 0;
+      font-size: 18px;
+      color: rgba(255,255,255,.89);
+    }
+    .hero-actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 20px;
+      border-radius: 7px;
+      font-weight: 700;
+      border: 2px solid transparent;
+    }
+    .btn-white { background: white; color: var(--navy); }
+    .btn-outline { border-color: rgba(255,255,255,.72); color: white; }
+    .hero-visual {
+      position: relative;
+      min-height: 355px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(8,47,85,.08), rgba(58,142,67,.18)),
+        #eef5f2;
+    }
+    .system-map {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 42px;
+    }
+    .system-core {
+      width: min(340px, 88%);
+      aspect-ratio: 1;
+      position: relative;
+      border-radius: 50%;
+      border: 1px solid rgba(8,47,85,.18);
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 20px 45px rgba(8,47,85,.12);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--navy);
+    }
+    .system-core::before,
+    .system-core::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(14,141,150,.20);
+    }
+    .system-core::before { inset: -26px; }
+    .system-core::after { inset: -52px; border-color: rgba(58,142,67,.18); }
+    .core-copy {
+      position: relative;
+      z-index: 2;
+      width: 72%;
+    }
+    .core-copy strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+    }
+    .core-copy span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .orbit {
+      position: absolute;
+      z-index: 3;
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 7px 18px rgba(8,47,85,.08);
+      color: var(--navy);
+    }
+    .orbit.one { top: 14%; left: 9%; }
+    .orbit.two { top: 12%; right: 10%; color: var(--green-dark); }
+    .orbit.three { bottom: 17%; left: 5%; color: var(--teal); }
+    .orbit.four { bottom: 14%; right: 7%; }
+
+    /* Intro */
+    .intro { padding: 58px 0 26px; }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 54px;
+      align-items: start;
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .section-title {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(29px, 3vw, 40px);
+      line-height: 1.12;
+      letter-spacing: -.02em;
+    }
+    .intro-copy {
+      font-size: 18px;
+      color: #455d70;
+    }
+    .intro-copy p { margin: 0 0 14px; }
+
+    /* Starting point cards */
+    .starting { padding: 34px 0 64px; }
+    .starting-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .start-card {
+      border-radius: var(--radius);
+      padding: 31px;
+      border: 1px solid var(--line);
+      background: white;
+      box-shadow: 0 10px 28px rgba(8,47,85,.055);
+    }
+    .start-card:first-child { border-top: 5px solid var(--blue); }
+    .start-card:last-child { border-top: 5px solid var(--green); }
+    .start-card h2 {
+      margin: 0 0 11px;
+      color: var(--navy);
+      font-size: 28px;
+      line-height: 1.1;
+    }
+    .start-card p { margin: 0 0 13px; }
+    .start-card ul {
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+    }
+    .start-card li {
+      position: relative;
+      padding-left: 22px;
+      margin: 9px 0;
+    }
+    .start-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+      color: var(--green);
+    }
+
+    /* Framework strip */
+    .schemes {
+      padding: 0 0 64px;
+    }
+    .scheme-shell {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .scheme-block {
+      padding: 34px;
+      min-height: 245px;
+    }
+    .sqf {
+      color: white;
+      background: linear-gradient(135deg, #083861, #0e67b2);
+    }
+    .brcgs {
+      color: white;
+      background: linear-gradient(135deg, #2f7137, #489950);
+    }
+    .scheme-block .scheme-name {
+      margin: 0 0 10px;
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .scheme-block p { margin: 0 0 12px; color: rgba(255,255,255,.9); }
+    .scheme-block small {
+      display: block;
+      color: rgba(255,255,255,.75);
+      font-size: 13px;
+    }
+
+    /* Components */
+    .components {
+      padding: 64px 0;
+      background: linear-gradient(180deg, #f8fbfd, #ffffff);
+      border-top: 1px solid #edf2f5;
+      border-bottom: 1px solid #edf2f5;
+    }
+    .component-head { max-width: 760px; margin-bottom: 30px; }
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .component {
+      min-height: 170px;
+      padding: 24px 23px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: white;
+    }
+    .component strong {
+      display: block;
+      color: var(--navy);
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+    .component span { color: var(--muted); font-size: 15px; }
+    .component:nth-child(2),
+    .component:nth-child(5) { border-top: 3px solid var(--green); }
+    .component:nth-child(1),
+    .component:nth-child(4) { border-top: 3px solid var(--blue); }
+    .component:nth-child(3),
+    .component:nth-child(6) { border-top: 3px solid var(--teal); }
+
+    /* Workflow */
+    .workflow { padding: 66px 0; }
+    .workflow-head { max-width: 700px; margin-bottom: 28px; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+    .step {
+      position: relative;
+      padding: 21px 18px;
+      min-height: 155px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+    .step-num {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--green);
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: .09em;
+    }
+    .step strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--navy);
+      font-size: 16px;
+    }
+    .step span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Philosophy */
+    .philosophy { padding: 0 0 66px; }
+    .philosophy-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      padding: 36px;
+      border-radius: var(--radius);
+      color: white;
+      background:
+        radial-gradient(circle at 88% 20%, rgba(58,142,67,.28), transparent 28%),
+        linear-gradient(130deg, #082f55, #0b477e);
+      box-shadow: var(--shadow);
+    }
+    .philosophy-card h2 { margin: 0 0 12px; font-size: 32px; }
+    .philosophy-card p { margin: 0; color: rgba(255,255,255,.88); }
+    .proof-points {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 11px;
+    }
+    .proof-point {
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      font-size: 14px;
+    }
+    .proof-point strong {
+      display: block;
+      color: #bde4c1;
+      margin-bottom: 2px;
+    }
+
+    /* CTA */
+    .cta { padding: 0 0 70px; }
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 32px 36px;
+      border-radius: var(--radius);
+      background: var(--green-soft);
+      border: 1px solid #d8eadb;
+    }
+    .cta h2 { margin: 0; color: var(--navy); font-size: 30px; }
+    .cta p { margin: 7px 0 0; color: #557064; }
+    .btn-green {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+      white-space: nowrap;
+    }
+
+    footer {
+      background: #062946;
+      color: #d9e6ef;
+      padding: 24px 0;
+      font-size: 13px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .footer-inner strong { color: white; }
+
+    @media (max-width: 900px) {
+      .nav { display: none; }
+      .page-hero { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 300px; }
+      .intro-grid { grid-template-columns: 1fr; gap: 24px; }
+      .starting-grid { grid-template-columns: 1fr; }
+      .scheme-shell { grid-template-columns: 1fr; }
+      .component-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .philosophy-card { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .wrap { width: calc(100% - 28px); }
+      .header-inner { min-height: 68px; }
+      .brand { gap: 9px; }
+      .brand-mark { width: 46px; height: 46px; flex-basis: 46px; }
+      .brand-name { font-size: 17px; }
+      .brand-subtitle { font-size: 10px; }
+      .page-hero { width: calc(100% - 28px); }
+      .hero-copy { padding: 38px 24px; }
+      .hero-lead { font-size: 16px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      .system-map { padding: 32px; }
+      .system-core { width: 250px; }
+      .orbit { font-size: 9px; }
+      .component-grid, .steps, .proof-points { grid-template-columns: 1fr; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+      .btn-green { width: 100%; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="Food Safety Groundwork home">
+        <svg class="brand-mark" viewBox="0 0 72 72" role="img" aria-label="">
+          <defs>
+            <linearGradient id="fg-blue" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#0b477e"/>
+              <stop offset="1" stop-color="#0e67b2"/>
+            </linearGradient>
+            <linearGradient id="fg-teal" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#0e67b2"/>
+              <stop offset="1" stop-color="#0e8d96"/>
+            </linearGradient>
+            <linearGradient id="fg-green" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#0e8d96"/>
+              <stop offset="1" stop-color="#3a8e43"/>
+            </linearGradient>
+          </defs>
+          <!-- layered geometric mark inspired by the approved Food Safety Groundwork logo -->
+          <path d="M36 4 64 19 54 25 36 15 18 25 18 34 8 28 8 19Z" fill="url(#fg-blue)"/>
+          <path d="M18 28 36 38 54 28 64 34 36 50 8 34Z" fill="url(#fg-teal)"/>
+          <path d="M18 38 36 48 54 38 64 44 36 60 8 44Z" fill="url(#fg-green)"/>
+          <path d="M18 49 36 59 54 49 64 55 36 70 8 55Z" fill="#2f7137" opacity=".95"/>
+          <path d="M20 27 36 18 52 27 42 33 36 30 30 33Z" fill="#ffffff" opacity=".98"/>
+          <path d="M20 42 30 36 36 39 42 36 52 42 36 51Z" fill="#ffffff" opacity=".98"/>
+        </svg>
+        <span class="brand-lockup">
+          <span class="brand-name">FOOD SAFETY<br>GROUNDWORK</span>
+          <span class="brand-subtitle">Food Safety &amp; Quality Consulting</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#standards">Standards</a>
+        <a href="index.html#industries">Industries</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#resources">Resources</a>
+        <a class="contact-link" href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="hero-copy">
+        <p class="kicker">Core Service</p>
+        <h1>Food Safety &amp; Quality Management Systems</h1>
+        <p class="hero-lead">
+          Build the complete system from the ground up—or fix the parts that are holding
+          an existing program back. We develop practical FSQMS programs around how your
+          operation actually works.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-white" href="index.html#contact">Discuss Your System</a>
+          <a class="btn btn-outline" href="#starting-point">Where Are You Starting?</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Food safety and quality management system graphic">
+        <div class="system-map">
+          <div class="system-core">
+            <div class="core-copy">
+              <strong>One System.</strong>
+              <span>Programs, people, records, verification, and improvement working together.</span>
+            </div>
+          </div>
+          <span class="orbit one">Programs</span>
+          <span class="orbit two">Compliance</span>
+          <span class="orbit three">Records</span>
+          <span class="orbit four">Verification</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="wrap intro-grid">
+        <div>
+          <p class="eyebrow">Built around the operation</p>
+          <h2 class="section-title">A management system is more than a collection of policies.</h2>
+        </div>
+        <div class="intro-copy">
+          <p>
+            A strong Food Safety &amp; Quality Management System connects regulatory and
+            certification requirements to the way receiving, production, sanitation,
+            maintenance, training, verification, corrective action, and management
+            actually function every day.
+          </p>
+          <p>
+            Our goal is not to hand you a generic manual. We build or improve the system
+            so the written program, the records, and the real operation support one another.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="starting" id="starting-point">
+      <div class="wrap starting-grid">
+
+        <article class="start-card">
+          <p class="eyebrow">Starting from the ground up</p>
+          <h2>Build the complete system.</h2>
+          <p>
+            For businesses taking the next step in formal food safety and quality
+            compliance, we can develop the structure, programs, records, responsibilities,
+            and verification activities needed to create a functioning management system.
+          </p>
+          <ul>
+            <li>System architecture and document structure</li>
+            <li>Required programs, policies, procedures, and forms</li>
+            <li>Roles, responsibilities, and training structure</li>
+            <li>Internal verification and audit framework</li>
+            <li>Implementation support and readiness review</li>
+          </ul>
+        </article>
+
+        <article class="start-card">
+          <p class="eyebrow">Already have a system</p>
+          <h2>Find the gaps. Fix what is not working.</h2>
+          <p>
+            Existing systems often grow out of date, become overly complicated, or stop
+            matching the way the facility actually operates. We can assess the current
+            program and focus effort where it will make the biggest difference.
+          </p>
+          <ul>
+            <li>Gap assessment and program review</li>
+            <li>Recurring nonconformity and corrective-action support</li>
+            <li>Outdated or impractical program revision</li>
+            <li>Forms and records redesign</li>
+            <li>Audit-readiness and continuous-improvement support</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="schemes">
+      <div class="wrap">
+        <div class="scheme-shell">
+          <div class="scheme-block sqf">
+            <div class="scheme-name">SQF</div>
+            <p>
+              Development, implementation, maintenance, and improvement of practical
+              Food Safety and Quality Management Systems for businesses working toward
+              certification or strengthening an existing SQF program.
+            </p>
+            <small>Build the system around the code—and around the operation that has to use it.</small>
+          </div>
+
+          <div class="scheme-block brcgs">
+            <div class="scheme-name">BRCGS</div>
+            <p>
+              Program development, gap assessment, corrective action, documentation,
+              verification, and audit-readiness support aligned with the operational
+              realities of the facility.
+            </p>
+            <small>Requirements on paper only work when they are implemented consistently in practice.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="components">
+      <div class="wrap">
+        <div class="component-head">
+          <p class="eyebrow">What we build and improve</p>
+          <h2 class="section-title">The pieces that make the system work.</h2>
+        </div>
+
+        <div class="component-grid">
+          <div class="component">
+            <strong>Prerequisite Programs</strong>
+            <span>GMPs, sanitation, allergen controls, food defense, supplier programs, traceability, environmental monitoring, receiving, and other foundational programs.</span>
+          </div>
+          <div class="component">
+            <strong>Policies, SOPs &amp; Work Instructions</strong>
+            <span>Documentation written around the process employees actually perform—not just language copied from a template.</span>
+          </div>
+          <div class="component">
+            <strong>Forms &amp; Records</strong>
+            <span>Logs, checklists, verification records, and practical forms that capture the evidence the system needs.</span>
+          </div>
+          <div class="component">
+            <strong>Auditing &amp; Verification</strong>
+            <span>Internal audits, record review, verification activities, program reassessment, and gap identification.</span>
+          </div>
+          <div class="component">
+            <strong>Corrective Action &amp; Improvement</strong>
+            <span>Root-cause analysis, corrective action, preventive measures, trend review, and system improvement after issues or audit findings.</span>
+          </div>
+          <div class="component">
+            <strong>Training &amp; Implementation</strong>
+            <span>Program-specific training and practical implementation support so the people responsible for the system understand what they are expected to do.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow">
+      <div class="wrap">
+        <div class="workflow-head">
+          <p class="eyebrow">How we approach the project</p>
+          <h2 class="section-title">Requirements translated into a working system.</h2>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">STEP 1</span>
+            <strong>Understand</strong>
+            <span>Products, processes, people, customers, regulatory requirements, and certification goals.</span>
+          </div>
+          <div class="step">
+            <span class="step-num">STEP 2</span>
+            <strong>Map</strong>
+            <span>Compare actual workflows to the programs, records, responsibilities, and controls the system needs.</span>
+          </div>
+          <div class="step">
+            <span class="step-num">STEP 3</span>
+            <strong>Build</strong>
+            <span>Develop or revise the FSQMS, prerequisite programs, procedures, forms, and supporting documentation.</span>
+          </div>
+          <div class="step">
+            <span class="step-num">STEP 4</span>
+            <strong>Implement</strong>
+            <span>Help translate written requirements into realistic responsibilities, training, and day-to-day practices.</span>
+          </div>
+          <div class="step">
+            <span class="step-num">STEP 5</span>
+            <strong>Verify</strong>
+            <span>Assess performance, close gaps, prepare for audit, and improve the system as the operation changes.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="philosophy">
+      <div class="wrap philosophy-card">
+        <div>
+          <p class="kicker">Practical by design</p>
+          <h2>Compliance should support the business—not bury it in paperwork.</h2>
+          <p>
+            Small and mid-sized businesses need systems that are rigorous enough to meet
+            requirements but simple enough to maintain. We look for the most practical way
+            to produce reliable evidence, assign responsibility, and keep the program current.
+          </p>
+        </div>
+
+        <div class="proof-points">
+          <div class="proof-point">
+            <strong>Operation-specific</strong>
+            Built around your real workflows.
+          </div>
+          <div class="proof-point">
+            <strong>Scalable</strong>
+            Appropriate to the size and complexity of the business.
+          </div>
+          <div class="proof-point">
+            <strong>Audit-ready</strong>
+            Records and verification designed to demonstrate implementation.
+          </div>
+          <div class="proof-point">
+            <strong>Maintainable</strong>
+            A system your team can continue using after the project is complete.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap cta-inner">
+        <div>
+          <h2>Building a system—or trying to rescue one?</h2>
+          <p>Tell us where you are now and where you need to get to. We can start there.</p>
+        </div>
+        <a class="btn btn-green" href="index.html#contact">Let's Talk</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div><strong>Food Safety Groundwork</strong> &nbsp;|&nbsp; Food Safety &amp; Quality Consulting</div>
+      <div>&copy; 2026 Food Safety Groundwork</div>
+    </div>
+  </footer>
+</body>
+</html>
