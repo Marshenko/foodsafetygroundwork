@@ -3,13 +3,13 @@
 
 <meta name="description" content="Practical food safety resources covering HACCP, FDA Food Safety Plans, SQF, BRCGS, FSMA, prerequisite programs, gap assessments, and food safety management systems.">
 
-<link rel="canonical" href="https://www.foodsafetygroundwork.com/resources.html">
+<link rel="canonical" href="https://foodsafetygroundwork.com/resources.html">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Food Safety Groundwork">
 <meta property="og:title" content="Food Safety Resources | HACCP, SQF, BRCGS &amp; FSMA">
 <meta property="og:description" content="Practical resources covering HACCP, FDA Food Safety Plans, SQF, BRCGS, FSMA, prerequisite programs, and food safety management systems.">
-<meta property="og:url" content="https://www.foodsafetygroundwork.com/resources.html">
+<meta property="og:url" content="https://foodsafetygroundwork.com/resources.html">
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
@@ -58,9 +58,20 @@ footer{background:#062946;color:#d9e6ef;padding:24px 0;font-size:13px}.footer-in
 .faq{margin-top:28px;border-top:1px solid var(--line)}details{padding:18px 0;border-bottom:1px solid var(--line)}summary{cursor:pointer;color:var(--navy);font-weight:800;font-size:17px}details p{max-width:900px;margin:10px 0 0;color:#526a7c}
 .notice{margin-top:28px;padding:18px 20px;border-left:4px solid var(--green);background:var(--green-soft);border-radius:0 9px 9px 0;color:#557064}
 @media(max-width:700px){.resource-grid{grid-template-columns:1fr}}
+
+/* Shared accessibility and small-screen navigation safeguards. */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #0e67b2;outline-offset:3px}
+.btn,.nav a,button,input,select{min-height:44px}
+@media(max-width:980px){
+  .header-inner{flex-wrap:wrap;gap:0;padding:8px 0}
+  .nav{display:flex;width:100%;gap:20px;overflow-x:auto;padding:4px 0 8px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .nav a{display:inline-flex;align-items:center;flex:0 0 auto}
+}
+@media(max-width:620px){h1{font-size:clamp(34px,10vw,44px)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav a::after{transition:none}}
 </style></head>
 <body><header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html" aria-label="Food Safety Groundwork home">
-        <svg class="brand-mark" viewBox="0 0 72 72" role="img" aria-label="">
+        <svg class="brand-mark" viewBox="0 0 72 72" aria-hidden="true" focusable="false">
           <defs>
             <linearGradient id="fg-blue" x1="0" x2="1" y1="0" y2="1">
               <stop offset="0" stop-color="#0b477e"/>
@@ -87,7 +98,7 @@ footer{background:#062946;color:#d9e6ef;padding:24px 0;font-size:13px}.footer-in
           <span class="brand-name">FOOD SAFETY<br>GROUNDWORK</span>
           <span class="brand-subtitle">Food Safety &amp; Quality Consulting</span>
         </span>
-      </a><nav class="nav" aria-label="Main navigation"><a href="services.html">Services</a><a href="standards.html">Standards</a><a href="industries.html">Industries</a><a href="about.html">About</a><a class="active" href="resources.html">Resources</a><a class="contact-link" href="contact.html">Contact</a></nav></div></header><main>
+      </a><nav class="nav" aria-label="Main navigation"><a href="services.html">Services</a><a href="standards.html">Standards</a><a href="industries.html">Industries</a><a href="about.html">About</a><a class="active" aria-current="page" href="resources.html">Resources</a><a class="contact-link" href="contact.html">Contact</a></nav></div></header><main>
 <section class="hero"><p class="kicker">Resources</p><h1>Food safety concepts without the unnecessary fog.</h1><p>Clear explanations for businesses trying to understand what they need, what the different frameworks mean, and where to start improving an existing program.</p></section>
 <section class="section"><div class="wrap"><p class="eyebrow">Start here</p><h2 class="section-title">Common questions we can answer quickly.</h2>
 <div class="resource-grid">

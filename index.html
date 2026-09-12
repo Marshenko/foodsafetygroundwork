@@ -28,6 +28,7 @@
   }
   </script>
 
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="#0b3f72">
 
   <style>
@@ -548,14 +549,25 @@
       .why-copy { padding: 32px 26px; }
       .footer-inner { flex-direction: column; text-align: center; }
     }
-  </style>
+
+/* Shared accessibility and small-screen navigation safeguards. */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #0e67b2;outline-offset:3px}
+.btn,.nav a,button,input,select{min-height:44px}
+@media(max-width:980px){
+  .header-inner{flex-wrap:wrap;gap:0;padding:8px 0}
+  .nav{display:flex;width:100%;gap:20px;overflow-x:auto;padding:4px 0 8px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .nav a{display:inline-flex;align-items:center;flex:0 0 auto}
+}
+@media(max-width:620px){h1{font-size:clamp(34px,10vw,44px)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav a::after{transition:none}}
+</style>
 </head>
 
 <body>
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="#top" aria-label="Food Safety Groundwork home">
-        <svg class="brand-mark" viewBox="0 0 72 72" role="img" aria-label="">
+        <svg class="brand-mark" viewBox="0 0 72 72" aria-hidden="true" focusable="false">
           <defs>
             <linearGradient id="fg-blue" x1="0" x2="1" y1="0" y2="1">
               <stop offset="0" stop-color="#0b477e"/>
